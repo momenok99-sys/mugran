@@ -29,7 +29,7 @@ export default function Navbar() {
         <div className="services-nav" ref={servicesRef} onMouseEnter={() => setServicesOpen(true)} onMouseLeave={() => setServicesOpen(false)}>
           <Link className="nav-link services-link" data-active={servicesActive || undefined} href={`${base}/services`}>{isRTL ? 'الخدمات' : 'SERVICES'}</Link>
           <button type="button" className="services-toggle" aria-label={isRTL ? 'فتح قائمة الخدمات' : 'Open services menu'} aria-expanded={servicesOpen} onClick={() => setServicesOpen(!servicesOpen)}><img src="/icons/arrow-down-01.svg" alt=""/></button>
-          {servicesOpen && <div className="services-dropdown">{services.map(([name, description, href]) => <Link href={`${base}/services${href}`} key={href}><b>{name}</b><span>{description}</span></Link>)}<Link className="all-services" href={`${base}/services`}>{isRTL ? 'عرض جميع الخدمات' : 'VIEW ALL SERVICES'} <img src="/icons/arrow-up-right-01.svg" alt=""/></Link></div>}
+          {servicesOpen && <div className="services-dropdown">{services.map(([name, description, href]) => <Link href={`${base}/services${href}`} key={href}><b>{name}</b><span>{description}</span></Link>)}<Link className="all-services" href={`${base}/services`}>{isRTL ? 'عرض جميع الخدمات' : 'VIEW ALL SERVICES'}</Link></div>}
         </div>
         {nav.slice(1).map(([label, href]) => <Link className="nav-link" aria-current={path === `${base}${href}` ? 'page' : undefined} data-active={path === `${base}${href}` || undefined} key={href} href={`${base}${href}`}>{label}</Link>)}
       </nav>
