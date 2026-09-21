@@ -43,7 +43,7 @@ const copy = {
 
 const paths=['/','/services','/work','/about','/contact'];
 const powerServiceIcon='https://www.figma.com/api/mcp/asset/41c7abe2-de9c-4140-99da-5a802de282cf.svg';
-const A=()=> <img aria-hidden="true" className="ms-arrow" src="/icons/arrow-up-right-01.svg" alt=""/>;
+const A=()=> null;
 
 export default function MugranStudio({ page='home' }) {
   const { lang='ar', isRTL=true, openProjectModal }=useLanguage(); const t=copy[lang]||copy.ar; const d=t[page]||t.home;
