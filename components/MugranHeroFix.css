@@ -1,0 +1,11 @@
+/* Hero hierarchy: type owns one side, motion plate owns the other, CTA stays with the copy. */
+@media(min-width:801px){
+  .ms-hero h1{max-width:55vw!important;font-size:clamp(54px,7.65vw,142px)!important}
+  .ms-hero-film{top:clamp(190px,25vh,270px)!important;bottom:auto!important;right:5vw!important;width:clamp(285px,29vw,480px)!important;height:clamp(185px,20vw,312px)!important}
+  .ms-hero-bottom{grid-template-columns:minmax(0,390px) 1fr!important;justify-content:start!important;gap:34px!important}
+  .ms-hero-bottom .ms-button{justify-self:start!important;align-self:end}
+  html[dir="rtl"] .ms-hero-film{right:auto!important;left:5vw!important}
+  html[dir="rtl"] .ms-hero-bottom .ms-button{justify-self:start!important}
+}
+@media(min-width:1200px){.ms-hero-bottom{padding-right:45vw!important}html[dir="rtl"] .ms-hero-bottom{padding-right:0!important;padding-left:45vw!important}}
+@media(max-width:800px){.ms-hero h1{max-width:100%!important;font-size:clamp(48px,14vw,78px)!important}.ms-hero-bottom .ms-button{justify-self:start}.ms-hero-film{z-index:0}}

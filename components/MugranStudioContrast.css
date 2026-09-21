@@ -1,0 +1,30 @@
+/* Dark surfaces always use a light foreground. Kept separate so these rules win over legacy tokens. */
+.ms-site .ms-service-top > span,
+.ms-site .ms-service-top .ms-arrow {
+  color: #f9fdff !important;
+}
+
+.ms-site .ms-service.active .ms-service-top > span,
+.ms-site .ms-service:hover .ms-service-top > span {
+  color: #fff !important;
+}
+
+.ms-contact select {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  padding: 15px 0;
+  color: #f9fdff;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #555963;
+  font: 17px var(--font-cairo);
+  outline: 0;
+}
+
+.ms-contact select option { color: #111215; }
+.ms-contact-email { display: inline-block; margin-top: 28px; color: #d19a58; font-size: 18px; }
+.ms-form-note { margin: 0; color: #d19a58; font-size: 14px; }
+
+/* The supplied artwork remains untouched; this only changes its displayed colour on dark chrome. */
+.agency-nav .agency-logo img { filter: brightness(0) invert(1) !important; }

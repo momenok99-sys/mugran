@@ -1,0 +1,154 @@
+{
+  "version": 1,
+  "project": {
+    "name": "mugran-portal",
+    "productType": null,
+    "stack": [
+      "nextjs",
+      "react"
+    ]
+  },
+  "sources": {
+    "tokens": [
+      "app/globals.css"
+    ],
+    "components": [
+      "components/ui"
+    ],
+    "assets": [],
+    "instructions": []
+  },
+  "design": {
+    "colorMode": "light",
+    "colors": {
+      "--color-brand-ink": {
+        "value": "#0B1338",
+        "source": "app/globals.css"
+      },
+      "--color-brand-blue": {
+        "value": "#2A4A9F",
+        "source": "app/globals.css"
+      },
+      "--color-brand-blue-hover": {
+        "value": "#1E367B",
+        "source": "app/globals.css"
+      },
+      "--color-brand-blue-subtle": {
+        "value": "rgba(42, 74, 159, 0.08)",
+        "source": "app/globals.css"
+      },
+      "--color-brand-blue-glow": {
+        "value": "rgba(42, 74, 159, 0.18)",
+        "source": "app/globals.css"
+      },
+      "--bg-muted": {
+        "value": "#ECEBE5",
+        "source": "app/globals.css"
+      },
+      "--text-primary": {
+        "value": "#0B1338",
+        "source": "app/globals.css"
+      },
+      "--text-secondary": {
+        "value": "#3B445B",
+        "source": "app/globals.css"
+      },
+      "--text-muted": {
+        "value": "#6B758E",
+        "source": "app/globals.css"
+      },
+      "--border-subtle": {
+        "value": "#E2E2DC",
+        "source": "app/globals.css"
+      },
+      "--border-medium": {
+        "value": "#CBCBC4",
+        "source": "app/globals.css"
+      },
+      "--border-strong": {
+        "value": "#0B1338",
+        "source": "app/globals.css"
+      }
+    },
+    "typography": {
+      "--text-inverse": {
+        "value": "#FBFBFA",
+        "source": "app/globals.css"
+      },
+      "--font-sans": {
+        "value": "'Aeonik TRIAL', 'Aeonik', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+        "source": "app/globals.css"
+      },
+      "--font-arabic": {
+        "value": "'IBM Plex Sans Arabic', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+        "source": "app/globals.css"
+      },
+      "--font-mono": {
+        "value": "'Space Mono', monospace",
+        "source": "app/globals.css"
+      }
+    },
+    "spacing": {},
+    "radius": {},
+    "shadows": {
+      "--shadow-sm": {
+        "value": "0 1px 3px rgba(11, 19, 56, 0.04)",
+        "source": "app/globals.css"
+      },
+      "--shadow-md": {
+        "value": "0 4px 16px -2px rgba(11, 19, 56, 0.06), 0 2px 6px -1px rgba(11, 19, 56, 0.03)",
+        "source": "app/globals.css"
+      },
+      "--shadow-lg": {
+        "value": "0 12px 32px -4px rgba(11, 19, 56, 0.08), 0 4px 12px -2px rgba(11, 19, 56, 0.04)",
+        "source": "app/globals.css"
+      }
+    },
+    "motion": {
+      "--ease-out": {
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "source": "app/globals.css"
+      },
+      "--ease-in-out": {
+        "value": "cubic-bezier(0.65, 0, 0.35, 1)",
+        "source": "app/globals.css"
+      }
+    },
+    "density": "unknown"
+  },
+  "components": {
+    "installed": [
+      "Overlay"
+    ],
+    "preferredPrimitives": [],
+    "patterns": []
+  },
+  "constraints": {
+    "must": [],
+    "avoid": []
+  },
+  "decisions": [],
+  "evidence": [
+    {
+      "fact": "components.installed",
+      "source": "components/ui"
+    },
+    {
+      "fact": "design.colorMode:light",
+      "source": "app/globals.css"
+    },
+    {
+      "fact": "design.tokens",
+      "source": "app/globals.css"
+    },
+    {
+      "fact": "project.stack:nextjs",
+      "source": "package.json"
+    },
+    {
+      "fact": "project.stack:react",
+      "source": "package.json"
+    }
+  ],
+  "generatedAt": "2026-09-02T06:41:18.573Z"
+}

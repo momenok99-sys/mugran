@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+@font-face {
+  font-family: 'Aeonik TRIAL';
+  src: local('Aeonik TRIAL Regular'), url('/fonts/aeonik-trial/New%20Aeonik%20Trials/AeonikTRIAL-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Aeonik TRIAL';
+  src: local('Aeonik TRIAL Bold'), url('/fonts/aeonik-trial/New%20Aeonik%20Trials/AeonikTRIAL-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* MUGRAN Navy System */
+  --color-navy: #0B1136;
+  --color-navy-dark: #070B24;
+  --color-navy-hover: #141D4E;
+  --color-brand-blue: #2A4A9F;
+  --color-brand-blue-hover: #1E377D;
+  --color-white: #FFFFFF;
+
+  /* Architectural Neutrals */
+  --bg-page: #F8FAFC;
+  --bg-surface: #FFFFFF;
+  --bg-subtle: #F1F4F9;
+  
+  /* Text Tokens */
+  --text-primary: #0B1136;
+  --text-secondary: #334155;
+  --text-muted: #64748B;
+  --text-white: #FFFFFF;
+
+  /* Typography */
+  --font-cairo: 'Cairo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: 'Aeonik TRIAL', 'Arial', sans-serif;
+  --font-arabic: var(--font-cairo);
+  --font-mono: 'Space Mono', monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-page);
+  color: var(--color-navy);
+  font-family: var(--font-cairo);
+}
+
+html[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+  font-family: var(--font-cairo);
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--bg-page);
+  color: var(--color-navy);
+  line-height: 1.5;
+  overflow-x: hidden;
+  position: relative;
+  font-family: var(--font-cairo);
+}
+
+html[dir="ltr"] body {
+  font-family: var(--font-sans);
+}
+
+.agency-nav[dir="rtl"] nav a,
+.agency-nav[dir="rtl"] .language,
+.agency-nav[dir="rtl"] .nav-project,
+.agency-nav[dir="rtl"] .agency-drawer a {
+  font-family: var(--font-cairo) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+}
+
+.agency-nav[dir="rtl"] nav a { font-size: 14px !important; }
+
+/* Navbar is always readable before the page has been scrolled. */
+.agency-nav:not(.is-scrolled) .nav-link,
+.agency-nav:not(.is-scrolled) .services-link,
+.agency-nav:not(.is-scrolled) .language {
+  color: #f9fdff !important;
+}
+.agency-nav:not(.is-scrolled) .nav-link:hover,
+.agency-nav:not(.is-scrolled) .nav-link:focus-visible,
+.agency-nav:not(.is-scrolled) .nav-link[data-active] {
+  color: #7d9cff !important;
+}
+
+/* Source SVGs are intentionally large; icons must never inherit their intrinsic 750px size. */
+img.ms-arrow,
+img.ms-inline-arrow,
+img.service-arrow {
+  display: inline-block !important;
+  width: 14px !important;
+  height: 14px !important;
+  max-width: 14px !important;
+  max-height: 14px !important;
+  flex: 0 0 14px !important;
+  object-fit: contain !important;
+}
+.ms-button img.ms-arrow {
+  filter: invert(28%) sepia(45%) saturate(1297%) hue-rotate(191deg) brightness(84%) contrast(94%) !important;
+}
+.nav-project img {
+  filter: invert(28%) sepia(45%) saturate(1297%) hue-rotate(191deg) brightness(84%) contrast(94%) !important;
+}
+
+::selection {
+  background-color: var(--color-navy);
+  color: #FFFFFF;
+}
+
+/* Massimo Vignelli Grid Container */
+.mugran-grid-container {
+  width: 100%;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+@media (max-width: 768px) {
+  .mugran-grid-container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: var(--font-cairo);
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F1F4F9;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
