@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar';
 import ProjectModal from '../components/ProjectModal';
 import Footer from '../components/Footer';
 import SiteIntro from '../components/SiteIntro';
+import BackToTop from '../components/BackToTop';
 
 export const metadata = {
   title: 'وكالة مُقرَن الإبداعية | اجعل الإدراك يواكب الواقع',
@@ -36,6 +37,7 @@ export default function RootLayout({ children }) {
             {children}
           </main>
           <Footer />
+          <BackToTop />
         </LanguageProvider>
       </body>
     </html>
