@@ -5,12 +5,17 @@ import gsap from 'gsap';
 import { useLanguage } from '../context/LanguageContext';
 import './SiteIntro.css';
 
-const words = ['WE', 'THINK', 'BEFORE', 'WE', 'MAKE.'];
+const introCopy = {
+  en: ['WE', 'THINK', 'BEFORE', 'WE', 'MAKE.'],
+  ar: 'نفكر قبل أن نصنــــــــع.',
+};
 
 export default function SiteIntro() {
   const { isRTL } = useLanguage();
   const [visible, setVisible] = useState(false);
   const root = useRef(null);
+  const locale = isRTL ? 'ar' : 'en';
+  const words = locale === 'ar' ? [introCopy.ar] : introCopy.en;
 
   useEffect(() => {
     if (sessionStorage.getItem('mugran-intro')) return;
@@ -58,7 +63,15 @@ export default function SiteIntro() {
 
   if (!visible) return null;
   return <div ref={root} className="site-intro" aria-label="Mugran intro">
-    <div className="site-intro-statement-layer"><p className="site-intro-statement">{words.map((word, index) => <span className="site-intro-word" key={`${word}-${index}`}>{word}</span>)}</p></div>
-    <div className="site-intro-blue"><div className="site-intro-logo-mask"><img className="site-intro-logo" src={isRTL ? '/arlogo.svg' : '/whitelogo.svg'} alt="Mugran" /></div></div>
+    <div className="site-intro-statement-layer">
+      <p className={`site-intro-statement site-intro-statement--${locale}`} dir={isRTL ? 'rtl' : 'ltr'}>
+        {words.map((word, index) => <span className="site-intro-word" key={`${word}-${index}`}>{word}</span>)}
+      </p>
+    </div>
+    <div className="site-intro-blue">
+      <div className="site-intro-logo-mask">
+        <img className="site-intro-logo" src="/whitelogo.svg" alt="Mugran" />
+      </div>
+    </div>
   </div>;
 }
