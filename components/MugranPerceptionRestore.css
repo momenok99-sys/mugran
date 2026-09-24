@@ -1,0 +1,10 @@
+/* Override only the legacy light-card rule inside the Perception Gap. */
+.ms-gap > div.ms-gap-copy {
+  min-height: 0;
+  padding: 0 0 clamp(38px, 4vw, 62px) !important;
+  background: transparent !important;
+  color: #f6f4ef;
+  border-radius: 0;
+}
+
+.ms-gap > div.ms-gap-copy > p:not(.ms-gap-payoff) { color: rgba(246, 244, 239, .66); }

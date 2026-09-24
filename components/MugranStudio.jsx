@@ -13,6 +13,7 @@ import './MugranStudioContrast.css';
 import './MugranPolish.css';
 import './GrainientHero.css';
 import './MugranServiceIndex.css';
+import './MugranServiceExploreFix.css';
 import './MugranHeroMedia.css';
 import './MugranHeroFix.css';
 import './MugranHeroFilmControl.css';
@@ -20,6 +21,7 @@ import './MugranInnerPages.css';
 import './MugranApproach.css';
 import './MugranApproachFix.css';
 import './MugranPerceptionGap.css';
+import './MugranPerceptionRestore.css';
 import './MugranServicesPage.css';
 
 if (typeof window !== 'undefined') gsap.registerPlugin(ScrollTrigger);
@@ -53,7 +55,7 @@ export default function MugranStudio({ page='home' }) {
   const href=(i)=> isRTL ? (paths[i]==='/'?'/ar':'/ar'+paths[i]) : paths[i];
   const button=<button className="ms-button" onClick={()=>openProjectModal()}>{t.cta}<A/></button>;
   return <div ref={root} dir={isRTL?'rtl':'ltr'} className="ms-site">
-    <section className={'ms-hero ms-'+page}><Grainient className="ms-hero-grain" color1="#000000" color2="#2A4A9F" color3="#000000" timeSpeed={0.55} warpStrength={0.55} warpFrequency={2.3} grainAmount={0.1} gamma={0.7}/><div className="ms-hero-film"><video autoPlay muted playsInline loop preload="metadata" poster="/image.png"><source src="/draft 2 done.mp4" type="video/mp4"/></video><button className="ms-hero-film-expand" type="button" aria-label={isRTL?'عرض الفيديو بكامل الشاشة':'Watch video fullscreen'} onClick={(event)=>{const video=event.currentTarget.parentElement.querySelector('video');if(video?.requestFullscreen)video.requestFullscreen();}}><img src="/icons/arrow-expand.svg" alt=""/></button></div><div className="ms-hero-wash"/><div className="ms-grid"><h1 data-reveal>{d.title||d.hero}</h1><div data-reveal className="ms-hero-bottom"><p>{d.lead}</p><button className="ms-button ms-hero-cta" onClick={()=>openProjectModal()}>{t.cta}</button></div></div></section>
+    <section className={'ms-hero ms-'+page}><Grainient className="ms-hero-grain" color1="#000000" color2="#2A4A9F" color3="#000000" timeSpeed={0.55} warpStrength={0.55} warpFrequency={2.3} grainAmount={0.1} gamma={0.7}/><div className="ms-hero-film"><video autoPlay muted playsInline loop preload="metadata" poster="/image.png"><source src={isRTL?'/draft 2 done.mp4':'/eng 3 .mp4'} type="video/mp4"/></video><button className="ms-hero-film-expand" type="button" aria-label={isRTL?'عرض الفيديو بكامل الشاشة':'Watch video fullscreen'} onClick={(event)=>{const video=event.currentTarget.parentElement.querySelector('video');if(video?.requestFullscreen)video.requestFullscreen();}}><img src="/icons/arrow-expand.svg" alt=""/></button></div><div className="ms-hero-wash"/><div className="ms-grid"><h1 data-reveal>{d.title||d.hero}</h1><div data-reveal className="ms-hero-bottom"><p>{d.lead}</p><button className="ms-button ms-hero-cta" onClick={()=>openProjectModal()}>{t.cta}</button></div></div></section>
     {page==='home' && <Home t={t} isRTL={isRTL} open={open} setOpen={setOpen} scroller={scroller} button={button}/>} 
     {page==='services' && <Services t={t} open={open} setOpen={setOpen} button={button}/>} 
     {page==='work' && <Thinking t={t} button={button}/>} 

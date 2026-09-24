@@ -1,0 +1,19 @@
+/* Keep the custom explore cursor anchored to the service-index coordinate space. */
+.ms-service-explore {
+  top: 0;
+  left: 0;
+  display: none;
+  align-content: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.ms-service-index.has-pointer .ms-service-explore {
+  display: grid;
+}
+
+html[dir="rtl"] .ms-service-explore {
+  font-family: var(--font-cairo);
+  font-weight: 700;
+  letter-spacing: 0;
+}
