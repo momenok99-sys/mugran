@@ -155,6 +155,26 @@ button {
   background: none;
 }
 
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Arabic is a document-level typography mode, not a collection of component overrides. */
+html[lang="ar"],
+html[lang="ar"] body {
+  font-family: var(--font-cairo);
+}
+
+html[lang="ar"] body *,
+html[lang="ar"] body *::before,
+html[lang="ar"] body *::after {
+  font-family: var(--font-cairo) !important;
+  letter-spacing: normal;
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
