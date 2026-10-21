@@ -1,3 +1,7 @@
 'use client';
-import MugranStudio from '../../components/MugranStudio';
-export default function ServicesPage(){return <MugranStudio page="services"/>}
+
+import ServicesExperience from '../../components/ServicesExperience';
+
+export default function ServicesPage() {
+  return <ServicesExperience />;
+}

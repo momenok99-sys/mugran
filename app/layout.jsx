@@ -1,41 +1,33 @@
 import './globals.css';
+import { headers } from 'next/headers';
 import { LanguageProvider } from '../context/LanguageContext';
 import Navbar from '../components/Navbar';
 import ProjectModal from '../components/ProjectModal';
 import Footer from '../components/Footer';
 import SiteIntro from '../components/SiteIntro';
 import BackToTop from '../components/BackToTop';
+import { getPageMetadata, getPageSchema, getRouteInfo } from '../lib/seo';
 
-export const metadata = {
-  title: 'وكالة مُقرَن الإبداعية | اجعل الإدراك يواكب الواقع',
-  description: 'مُقرَن وكالة إبداعية مستقلة تساعد الشركات الطموحة على بناء علامات مميزة، وتجارب رقمية واضحة، وحضور إبداعي مؤثر.',
-  keywords: ['وكالة إبداعية', 'هوية بصرية', 'تصميم رقمي', 'وكالة مقرن', 'Mugran Creative Agency'],
-  authors: [{ name: 'وكالة مُقرَن الإبداعية' }],
-  icons: [
-    {
-      rel: 'icon',
-      url: '/gr logo.svg',
-    },
-  ],
-};
+export function generateMetadata() {
+  return getPageMetadata(headers().get('x-mugran-pathname') || '/');
+}
 
-export const viewport = {
-  width: 'device-width',
-  initialScale: 1,
-  maximumScale: 5,
-};
+export const viewport = { width: 'device-width', initialScale: 1, maximumScale: 5 };
 
 export default function RootLayout({ children }) {
+  const pathname = headers().get('x-mugran-pathname') || '/';
+  const { language } = getRouteInfo(pathname);
+  const schema = getPageSchema(pathname);
+
   return (
-    <html lang="ar" dir="rtl">
+    <html lang={language} dir={language === 'ar' ? 'rtl' : 'ltr'}>
       <body>
+        {schema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, '\\u003c') }} />}
         <LanguageProvider>
           <SiteIntro />
           <Navbar />
           <ProjectModal />
-          <main style={{ minHeight: '100vh', position: 'relative', overflow: 'hidden' }}>
-            {children}
-          </main>
+          <main style={{ minHeight: '100vh', position: 'relative', overflow: 'hidden' }}>{children}</main>
           <Footer />
           <BackToTop />
         </LanguageProvider>
