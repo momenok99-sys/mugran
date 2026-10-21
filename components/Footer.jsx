@@ -10,6 +10,7 @@ import {
 } from 'react-icons/fa6';
 import { useLanguage } from '../context/LanguageContext';
 import { siteContent } from '../data/content';
+import { businessIdentity } from '../lib/businessIdentity';
 import { socialLinks } from './socialLinks';
 import './FooterPro.css';
 import './FooterMicro.css';
@@ -35,7 +36,7 @@ export default function Footer() {
   const local = (href) => (
     isRTL
       ? (href === '/' ? '/ar' : `/ar${href.replace(/^\/ar/, '')}`)
-      : href.replace(/^\/ar/, '') || '/'
+      : (href === '/' ? '/' : `/en${href.replace(/^\/ar/, '')}`)
   );
 
   const Links = ({ column }) => (
@@ -68,8 +69,8 @@ export default function Footer() {
 
           <div className="footer-connect">
             <h4>{isRTL ? 'تواصل واجتماعي' : 'CONTACT & SOCIAL'}</h4>
-            <a className="footer-email" href="mailto:info@mugranagency.com">
-              info@mugranagency.com
+            <a className="footer-email" href={`mailto:${businessIdentity.email}`}>
+              {businessIdentity.email}
             </a>
             <div className="footer-socials">
               {socialLinks.map(({ name, href, ariaLabel }) => (
