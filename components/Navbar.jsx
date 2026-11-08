@@ -100,8 +100,10 @@ export default function Navbar() {
   }, [drawer, mobileOpen]);
 
   const closeDrawer = () => setDrawer(false);
+  const navigation = [...links, ['Offer', '/launch']];
+  const resolveHref = (href) => href === '/launch' ? href : base + href;
   const desktopLink = ([name, href]) => (
-    <Link key={href} className={`nav-link${path === base + href ? ' is-active' : ''}`} href={base + href}>
+    <Link key={href} className={`nav-link${path === resolveHref(href) ? ' is-active' : ''}`} href={resolveHref(href)} aria-current={path === resolveHref(href) ? 'page' : undefined}>
       {name}
     </Link>
   );
@@ -136,7 +138,7 @@ export default function Navbar() {
               </div>
             )}
           </div>
-          {links.slice(1).map(desktopLink)}
+          {navigation.slice(1).map(desktopLink)}
         </nav>
 
         <div className="nav-actions">
@@ -179,8 +181,8 @@ export default function Navbar() {
               </Link>
             </div>
           </div>
-          {links.slice(1).map(([name, href]) => (
-            <Link className="drawer-link" href={base + href} onClick={closeDrawer} key={href}>{name}</Link>
+          {navigation.slice(1).map(([name, href]) => (
+            <Link className={`drawer-link${path === resolveHref(href) ? ' is-active' : ''}`} href={resolveHref(href)} aria-current={path === resolveHref(href) ? 'page' : undefined} onClick={closeDrawer} key={href}>{name}</Link>
           ))}
           <div className="drawer-socials">
             {social.map(([name, href, ariaLabel]) => (

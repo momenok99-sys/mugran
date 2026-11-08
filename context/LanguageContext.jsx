@@ -33,6 +33,12 @@ export function LanguageProvider({ children }) {
     setLang(next);
     localStorage.setItem('mugran_lang', next);
 
+    // Launch is English-only; the language switch opens the existing Arabic site.
+    if (pathname === '/launch') {
+      router.push(next === 'ar' ? '/ar' : '/');
+      return;
+    }
+
     // Compute target route
     let purePath = pathname;
     if (purePath.startsWith('/ar')) {
@@ -65,11 +71,15 @@ export function LanguageProvider({ children }) {
   }, [lang, isRTL]);
 
   const openProjectModal = useCallback((preselectedChallenge = null) => {
+    if (pathname === '/launch') {
+      window.dispatchEvent(new CustomEvent('mugran:launch-enquiry'));
+      return;
+    }
     if (preselectedChallenge) {
       setActiveChallenge(preselectedChallenge);
     }
     setIsModalOpen(true);
-  }, []);
+  }, [pathname]);
 
   const closeProjectModal = useCallback(() => {
     setIsModalOpen(false);

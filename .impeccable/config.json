@@ -5,5 +5,20 @@
       "maxFindings": 5,
       "maxChars": 8000
     }
+  },
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "gradient-text",
+        "value": "*",
+        "files": [
+          "components/LaunchPage.css"
+        ],
+        "createdAt": "2026-11-08T19:01:43.210Z",
+        "reason": "User explicitly requires exact Figma frame 792:2130. Its heading and pricing text gradients are authoritative and must not be replaced with solid colors."
+      }
+    ]
   }
 }

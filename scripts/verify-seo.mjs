@@ -99,7 +99,8 @@ const robots = await (await fetch(`${origin}/robots.txt`)).text();
 assert.match(robots, /User-Agent: \*/);
 assert.match(robots, /Sitemap: https:\/\/www\.mugranagency\.com\/sitemap\.xml/);
 const sitemap = await (await fetch(`${origin}/sitemap.xml`)).text();
-assert.equal((sitemap.match(/<loc>/g) || []).length, canonicalRoutes.length, 'sitemap URL count');
+assert.equal((sitemap.match(/<loc>/g) || []).length, canonicalRoutes.length + 1, 'sitemap URL count including launch');
+assert.ok(sitemap.includes(`<loc>${site}/launch</loc>`), 'launch in sitemap');
 for (const route of canonicalRoutes) assert.ok(sitemap.includes(`<loc>${site}${route}</loc>`), `${route} in sitemap`);
 assert.ok(!sitemap.includes('/work</loc>'), 'empty work pages excluded');
 
