@@ -8,6 +8,7 @@ import LaunchFAQ from './launch/LaunchFAQ';
 import useLaunchMotion from './launch/useLaunchMotion';
 import LaunchIcon from './launch/LaunchIcon';
 import CampaignGallery from './launch/CampaignGallery';
+import BeforeAfterSlider from './launch/BeforeAfterSlider';
 import './LaunchPage.css';
 
 const asset = (name) => `/images/launch/${name}`;
@@ -108,6 +109,14 @@ export default function LaunchPage() {
       <section className="lf-campaign-showcase" data-motion="campaign-showcase" aria-labelledby="campaign-title">
         <header className="lf-service-header" data-node-id="791:2095"><h2 id="campaign-title" className="lf-heading">Mini Product<br />Campaign</h2><p>Five carefully art-directed campaign visuals that give your product a more compelling presence across your digital channels.</p></header>
         <CampaignGallery />
+      </section>
+      <section className="lf-comparison" aria-labelledby="comparison-title">
+        <header className="lf-comparison-header">
+          <p className="lf-comparison-eyebrow">THE DIFFERENCE</p>
+          <h2 id="comparison-title" className="lf-heading">Same product. Different perception.</h2>
+          <p>See how considered art direction can transform the way a product is presented.</p>
+        </header>
+        <BeforeAfterSlider before={asset('b.png')} after={asset('af.png')} />
       </section>
       <Pricing campaign onChoose={() => choose('campaign')} />
     </div>

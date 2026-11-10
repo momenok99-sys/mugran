@@ -187,6 +187,37 @@
 .lf-final-content { position: absolute; top: calc(187 * var(--u)); left: calc(92 * var(--u)); width: calc(1288 * var(--u)); display: flex; flex-direction: column; align-items: center; gap: calc(24 * var(--u)); text-align: center; }
 .lf-final h2 { font-size: calc(64 * var(--u)); background-image: linear-gradient(169.094deg,#fff 12.278%,#3989fe 136.09%); }
 .lf-final-content > p { color: #edf1fa; }
+/* Only these two backgrounds escape the approved 1440px page frame.
+   The existing main overflow boundary clips scrollbar-width viewport excess. */
+@media(min-width:1441px) {
+  .lf-faq, .lf-final { margin-inline: calc((1440px - 100vw) / 2); }
+  .lf-faq { padding-left: calc((100% - 1440px) / 2 + 84px); padding-right: calc((100% - 1440px) / 2 + 60px); }
+  .lf-faq-layout { width: 1296px; margin-inline: auto; }
+  .lf-final-content { left: calc(50% - 720px + 92px); }
+}
+
+.lf-comparison { padding: calc(80 * var(--u)) 3.75% calc(100 * var(--u)); }
+.lf-comparison-header { max-width: 1000px; margin: 0 auto calc(48 * var(--u)); text-align: center; }
+.lf-comparison-header h2 { font-size: calc(56 * var(--u)); margin-block: calc(24 * var(--u)); }
+.lf-comparison-header > p { color: #525252; }
+.lf-comparison-header .lf-comparison-eyebrow { font-size: 14px; line-height: 1.5; color: var(--navy); }
+.lf-comparison-frame { position: relative; width: 100%; max-width: 948px; margin-inline: auto; aspect-ratio: 1696 / 2528; border-radius: calc(25 * var(--u)); overflow: hidden; background: #f2f2f4; touch-action: pan-y; user-select: none; -webkit-user-select: none; cursor: ew-resize; }
+.lf-comparison-layer { position: absolute; inset: 0; background: #f2f2f4; pointer-events: none; }
+.lf-comparison-layer img { display: block; width: 100%; height: 100%; object-fit: contain; object-position: center; }
+.lf-comparison-before { clip-path: inset(0 calc(100% - var(--reveal)) 0 0); }
+.lf-comparison-label { position: absolute; top: 18px; left: 18px; padding: 7px 10px; border-radius: 8px; background: var(--navy); color: #fff; font-size: 13px; line-height: 1.4; }
+.lf-comparison-after { left: auto; right: 18px; }
+.lf-comparison-divider { position: absolute; inset-block: 0; left: var(--reveal); width: 2px; background: #fff; transform: translateX(-50%); pointer-events: none; }
+.lf-comparison-handle { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; color: var(--navy); background: #fff; box-shadow: 0 2px 8px #0f1b3933; }
+@media(max-width:767px) {
+  .lf-comparison { padding: 45px 22px 60px; }
+  .lf-comparison-header { margin-bottom: 30px; }
+  .lf-comparison-header h2 { font-size: clamp(32px,8.6vw,46px); margin-block: 22px; }
+  .lf-comparison-header > p { font-size: 16px; line-height: 1.65; }
+  .lf-comparison-frame { border-radius: 16px; }
+  .lf-comparison-label { top: 12px; left: 12px; }
+  .lf-comparison-after { left: auto; right: 12px; }
+}
 
 /* Enquiry is an interaction overlay, never an extra section in the design. */
 .lf-enquiry { position: fixed; inset: 0; width: min(620px,calc(100% - 32px)); max-height: calc(100dvh - 40px); margin: auto; padding: 0; border: 0; border-radius: 12px; background: #fff; color: #0f1b39; font: 16px/1.6 var(--launch-cairo),Cairo,sans-serif; overscroll-behavior: contain; }

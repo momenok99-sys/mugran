@@ -88,7 +88,7 @@ try {
   assert.equal(await evaluate(`document.querySelector('meta[name="description"]').content`), 'Custom landing pages from AED 899 and five-image product campaigns from AED 599. Explore fast, premium creative services by Mugran Creative in Dubai.');
   assert.ok(!faq.some(row=>/AED (750|699)/.test(row.question+row.answer)));
   assert.equal(899 + 599 - 1299, 199);
-  for (const width of [375, 390, 768, 1024, 1440]) {
+  for (const width of [375, 430, 768, 1024, 1440, 1920, 2560]) {
     await call('Emulation.setDeviceMetricsOverride', { width, height: 1024, deviceScaleFactor: 1, mobile: width < 768 });
     await evaluate(`window.scrollTo({ top: 0, behavior: 'instant' })`);
     await wait(180);
@@ -111,12 +111,13 @@ try {
     assert.match(geometry.canonical, /\/launch$/);
     if (width === 1440) {
       const faqHeight = geometry.sections.find(section => section.name === 'faq').height;
-      assert.equal(geometry.height, 8913 + faqHeight - 812, 'Only the expanded FAQ copy changes total frame height');
+      const comparisonHeight = await evaluate(`document.querySelector('.lf-comparison').getBoundingClientRect().height`);
+      assert.ok(Math.abs(geometry.height - (8913 + faqHeight - 812 + comparisonHeight)) < 1, 'Only FAQ expansion and the comparison add frame height');
       assert.equal(geometry.heading.x, 54);
       assert.equal(geometry.heading.width, 579);
       assert.ok(Math.abs(geometry.heading.height - 118) < 1);
-      assert.deepEqual(geometry.sections.slice(0,9).map(section => section.y - geometry.frameTop), [0,1024,1480,2501,3385,4406,5290,6332,7231]);
-      assert.ok(Math.abs(geometry.sections[9].y - geometry.frameTop - 7231 - faqHeight) < 1, 'Final CTA follows natural FAQ height');
+      assert.deepEqual(geometry.sections.slice(0,9).map((section, index) => section.y - geometry.frameTop - (index >= 5 ? comparisonHeight : 0)), [0,1024,1480,2501,3385,4406,5290,6332,7231]);
+      assert.ok(Math.abs(geometry.sections[9].y - geometry.frameTop - 7231 - faqHeight - comparisonHeight) < 1, 'Final CTA follows natural FAQ height');
     }
     await screenshot(`launch-${width}`, width < 768);
     console.log(`PASS ${width}px: no overflow, heading fits, ${geometry.images.length} image instances loaded`);
